@@ -1,0 +1,66 @@
+<form [formGroup]="formulario">
+  @if (formulario.get('nome').hasError('required')&&formulario.get('nome').touched) {
+    <p class="alert alert-warning">O campo nome é obrigatório</p>
+  }
+  @if (formulario.get('nome').hasError('minlength')&&formulario.get('nome').touched) {
+    <p class="alert alert-warning">O campo nome precisa de pelo menos 3 caracteries</p>
+  }
+  <input type="text" formControlName="nome" placeholder="nome" class="form-control">
+
+
+
+  @if (formulario.get('idade').hasError('required')&&formulario.get('idade').touched) {
+    <p class="alert alert-warning">O campo idade é obrigatório</p>
+  }
+  @if (formulario.get('idade').hasError('min')&&formulario.get('idade').touched) {
+    <p class="alert alert-warning">O campo idade não aceitar números negativos.</p>
+  }
+  @if (formulario.get('idade').hasError('max')&&formulario.get('idade').touched) {
+    <p class="alert alert-warning">O campo idade não poder ser superior a 120.</p>
+  }
+  <input type="number" formControlName="idade" placeholder="idade" class="form-control">
+
+
+
+  @if (formulario.get('cidade').hasError('required')&&formulario.get('cidade').touched) {
+    <p class="alert alert-warning">O campo cidade é obrigatório</p>
+  }
+  @if (formulario.get('cidade').hasError('minlength')&&formulario.get('cidade').touched) {
+    <p class="alert alert-warning">O campo cidade precisa de pelo menos 3 caracteries</p>
+  }
+  <input type="text" formControlName="cidade" placeholder="cidade" class="form-control">
+
+  @if (btnCadastrar) {
+    <input type="button" value="cadastrar" class="btn btn-primary" (click)="cadastrar()" [disabled]="formulario.invalid">
+  } @else{
+    <input type="button" value="alterar" (click)="alterar()" class="btn btn-warning">
+    <input type="button" value="remover" (click)="remover()" class="btn btn-danger">
+    <input type="button" value="cancelar" (click)="cancelar()" class="btn btn-primary">
+  }
+
+</form>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>nome</th>
+      <th>idade</th>
+      <th>cidade</th>
+      <th>selecionar</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let v of vetor; index as indice">
+    <tr>
+      <td>{{indice+1}}</td>
+      <td>{{v.nome}}</td>
+      <td>{{v.idade}}</td>
+      <td>{{v.cidade}}</td>
+      <td><button type="button" class="btn btn-primary" (click)="selecionar(indice)">selecionar</button></td>
+    </tr>
+  </tbody>
+  <tbody>
+
+  </tbody>
+</table>

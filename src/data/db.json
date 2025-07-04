@@ -1,0 +1,6 @@
+{
+  "pessoa": [
+    { "id": 1, "nome": "jardriel", "idade": 27,"cidade":"aquiraz"},
+    { "id": 2, "nome": "brenda", "idade": 20 , "cidade":"eusebio"}
+  ]
+}
